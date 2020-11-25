@@ -7,14 +7,10 @@ var config = require('./config/database');
 
 
 // connecting to // database
-
-mongoose.connect(config.database);
-//mongoose.connect('mongodb://localhost:27017/node_emarket', {useNewUrlParser: true});
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-    console.log('Connected to MongoDB');
-});
+mongoose.connect('mongodb://localhost:27017/node_emarket', {
+    useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
+  }).then(() => console.log('Mongodb connected...'))
+  .catch(err => console.log(err))
 
 
 //initialising app
